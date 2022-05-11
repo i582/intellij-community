@@ -447,7 +447,11 @@ public abstract class UsefulTestCase extends TestCase {
     if (policy != null && !policy.canRun(getClass())) {
       return false;
     }
-    return TestFrameworkUtil.canRunTest(getClass());
+
+    throw new RuntimeException("I want to fail!");
+    //if (BuildServerRerunUtil.INSTANCE.shouldSkip(getClass(), getName())) return false;
+
+    //return TestFrameworkUtil.canRunTest(getClass());
   }
 
   protected void runTestRunnable(@NotNull ThrowableRunnable<Throwable> testRunnable) throws Throwable {
