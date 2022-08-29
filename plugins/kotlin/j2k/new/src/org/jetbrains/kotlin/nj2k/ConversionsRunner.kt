@@ -55,6 +55,7 @@ object ConversionsRunner {
         StaticsToCompanionExtractConversion(context),
         InterfaceWithFieldConversion(context),
         ClassToObjectPromotionConversion(context),
+        RecordConversion(context),
         RemoveWrongExtraModifiersForSingleFunctionsConversion(context),
         MethodReferenceToLambdaConversion(context),
         TypeMappingConversion(context) { typeElement ->

@@ -36,6 +36,7 @@ class JKClass(
         ANNOTATION("annotation class"),
         CLASS("class"),
         ENUM("enum class"),
+        RECORD("record"),
         INTERFACE("interface"),
         OBJECT("object"),
         COMPANION("companion object")
@@ -250,4 +251,14 @@ class JKKtInitDeclaration(block: JKBlock) : JKInitDeclaration(block) {
 class JKJavaStaticInitDeclaration(block: JKBlock) : JKInitDeclaration(block) {
     override val isStatic: Boolean get() = true
     override fun accept(visitor: JKVisitor) = visitor.visitJavaStaticInitDeclaration(this)
+}
+
+sealed class JKRecordHeaderDeclaration(parameters: List<JKParameter>, fields: List<JKField>) : JKDeclaration() {
+    val parameters: List<JKParameter> by children(parameters)
+    val fields: List<JKField> by children(fields)
+    override val name: JKNameIdentifier by child(JKNameIdentifier("<init>"))
+}
+
+class JKKtRecordHeaderDeclaration(parameters: List<JKParameter>, fields: List<JKField>) : JKRecordHeaderDeclaration(parameters, fields) {
+    override fun accept(visitor: JKVisitor) = visitor.visitKtRecordHeaderDeclaration(this)
 }

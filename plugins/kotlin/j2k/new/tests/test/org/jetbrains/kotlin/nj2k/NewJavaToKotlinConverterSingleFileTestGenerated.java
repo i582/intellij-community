@@ -4171,6 +4171,19 @@ public abstract class NewJavaToKotlinConverterSingleFileTestGenerated extends Ab
                 runTest("testData/newJ2k/newJavaFeatures/yieldOutsideWhen.java");
             }
         }
+
+        @RunWith(JUnit3RunnerWithInners.class)
+        @TestMetadata("testData/newJ2k/newJavaFeatures/recordClass")
+        public static class Records extends AbstractNewJavaToKotlinConverterSingleFileTest {
+            private void runTest(String testDataFilePath) throws Exception {
+                KotlinTestUtils.runTest(this::doTest, this, testDataFilePath);
+            }
+
+            @TestMetadata("simpleRecord.java")
+            public void testSimpleRecord() throws Exception {
+                runTest("testData/newJ2k/newJavaFeatures/recordClass/simpleRecord.java");
+            }
+        }
     }
 
     @RunWith(JUnit3RunnerWithInners.class)

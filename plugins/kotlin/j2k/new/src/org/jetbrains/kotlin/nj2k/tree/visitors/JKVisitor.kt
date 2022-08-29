@@ -22,6 +22,7 @@ abstract class JKVisitor {
     open fun visitKtInitDeclaration(ktInitDeclaration: JKKtInitDeclaration) = visitDeclaration(ktInitDeclaration)
     open fun visitJavaStaticInitDeclaration(javaStaticInitDeclaration: JKJavaStaticInitDeclaration) =
         visitDeclaration(javaStaticInitDeclaration)
+    open fun visitKtRecordHeaderDeclaration(ktRecordHeaderDeclaration: JKKtRecordHeaderDeclaration) = visitDeclaration(ktRecordHeaderDeclaration)
 
     open fun visitTreeRoot(treeRoot: JKTreeRoot) = visitTreeElement(treeRoot)
     open fun visitFile(file: JKFile) = visitTreeElement(file)
